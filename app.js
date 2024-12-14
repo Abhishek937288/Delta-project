@@ -35,7 +35,7 @@ async function main() {
 }
 
 app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, "views"));
+app.set('views', path.resolve(__dirname, 'src/views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -123,7 +123,7 @@ app.all("*",(req,res,next)=>{
 
 app.use((err,req,res,next)=>{
   let{statusCode = 500 ,message="Something went Wrong!" }= err;
-  res.status(statusCode).render("error.ejs", { message: err.message || "Unexpected error" });
+  res.status(statusCode).render("error.ejs", { message });
   //  res.status(statusCode).send(message);
 }); 
 
