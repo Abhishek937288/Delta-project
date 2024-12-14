@@ -1,9 +1,5 @@
 {
-  "engines": {
-    "node": "20.18.0"
-  }
-},
-  {"name": "majorproject",
+  "name": "majorproject",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -13,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "engines": {
+    "node": "20.18.0"
+  },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.1",
     "cloudinary": "^1.21.0",
