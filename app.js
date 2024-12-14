@@ -89,6 +89,10 @@ app.use((req,res,next)=>{
   next();
 });
 
+app.listen(8080, () => {
+  console.log("server is listening to port 8080");
+});
+
 
 // app.get("/demouser",async(req,res)=>{
 //   let fakeUser = new User ({
