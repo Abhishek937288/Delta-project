@@ -34,7 +34,7 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -123,10 +123,9 @@ app.all("*",(req,res,next)=>{
 
 app.use((err,req,res,next)=>{
   let{statusCode = 500 ,message="Something went Wrong!" }= err;
-res.status(statusCode).render("error.ejs",{message});
+res.status(statusCode).render("/listings/error.ejs",{message});
   //  res.status(statusCode).send(message);
-}); 
-
+});
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
 });
