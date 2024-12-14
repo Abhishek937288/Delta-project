@@ -34,8 +34,8 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
-app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, "views"));
+app.set('View engine', 'ejs');
+app.set("Views", path.join(__dirname, "Views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -65,12 +65,6 @@ const sessionOptions = {
   },
 };
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// });
-
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -88,17 +82,6 @@ app.use((req,res,next)=>{
   res.locals.currUser = req.user;
   next();
 });
-
-
-// app.get("/demouser",async(req,res)=>{
-//   let fakeUser = new User ({
-//     email : "student@gmail.com",
-//     username : "delta-student"
-//   });
-
-//   let registerUser = await User.register(fakeUser,"helloworld");
-//   res.send(registerUser);
-// });
 
 const validateReview = (req,res,next)=>{
   const { error } = reviewSchema.validate(req.body);
