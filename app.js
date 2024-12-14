@@ -35,7 +35,7 @@ async function main() {
 }
 
 app.set('view engine', 'ejs');
-app.set('views', path.resolve(__dirname, 'src/views'));
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -119,6 +119,10 @@ app.use("/",userRouter);
 
 app.all("*",(req,res,next)=>{
   next(new ExpressError(404,"page not found"));
+});
+
+app.get('/error', function (req, res) {
+  res.render(path.join(__dirname, 'views/error.ejs'));
 });
 
 app.use((err,req,res,next)=>{
