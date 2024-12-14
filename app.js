@@ -34,7 +34,7 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -98,34 +98,4 @@ app.use((req,res,next)=>{
 
 //   let registerUser = await User.register(fakeUser,"helloworld");
 //   res.send(registerUser);
-// });
-
-const validateReview = (req,res,next)=>{
-  const { error } = reviewSchema.validate(req.body);
-  
-  if (error) {
-    let errMsg = error.details.map((el)=>el.message).join(",");
-    throw new ExpressError(400, errMsg); 
-  }else{
-    next();
-  }
-};
-
-
-app.use("/listings",listingRouter);
-app.use("/listings/:id/reviews", reviewRouter);
-app.use("/",userRouter);
-
-
-app.all("*",(req,res,next)=>{
-  next(new ExpressError(404,"page not found"));
-});
-
-app.use((err,req,res,next)=>{
-  let{statusCode = 500 ,message="Something went Wrong!" }= err;
-res.status(statusCode).render("/listings/error.ejs",{message});
-  //  res.status(statusCode).send(message);
-});
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
-});
+// ... (32 lines left)
