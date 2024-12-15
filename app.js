@@ -97,7 +97,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { message });
 });
 
-console.log("Views Directory:", path.join(__dirname, 'views'));
+
 
 
 // Server
